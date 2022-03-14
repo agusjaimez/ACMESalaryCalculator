@@ -5,7 +5,9 @@ from file_reader import read_file
 
 
 def get_data_sets(text: str) -> list[str]:
-    return str(text).split("\n")
+    data = str(text).split("\n")
+    data.remove('')
+    return data
 
 
 def main() -> None:
