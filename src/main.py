@@ -1,23 +1,23 @@
 from worker import Worker
+from file_reader import read_file
 
-#This function returns the whole text in a file
-def readFile(f: str) -> str:
-    dataFile = open(f,"r")
-    fileText = dataFile.read()
-    return fileText
+# This function returns the whole text in a file
 
-def getDataSets(text: str) -> list[str]:
+
+def get_data_sets(text: str) -> list[str]:
     return str(text).split("\n")
 
+
 def main() -> None:
-    dataSets = getDataSets(readFile("./resources/example.txt")) 
-    #Create a worker for each set of data
+    dataSets = get_data_sets(read_file("./resources/example.txt"))
+    # Create a worker for each set of data
     for data in dataSets:
-        #Separate the name from the worked days and hours
+        # Separate the name from the worked days and hours
         splittedData = data.split("=")
-        #Create a worker with the name and the worked days and hours
-        worker = Worker(splittedData[0],splittedData[1])
+        # Create a worker with the name and the worked days and hours
+        worker = Worker(splittedData[0], splittedData[1])
         print(worker.__str__())
 
-if __name__=="__main__":
+
+if __name__ == "__main__":
     main()
